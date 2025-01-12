@@ -1,0 +1,64 @@
+{
+  "recipes": [
+    {
+      "name": "Kanarisotto",
+      "picture": "url_to_kanarisotto_picture",
+      "id": "1"
+    },
+    {
+      "name": "Nakit ja muussi",
+      "picture": "url_to_nakit_ja_muussi_picture",
+      "id": "2"
+    },
+    {
+      "name": "Lasagnette",
+      "picture": "url_to_lasagnette_picture",
+      "id": "3"
+    },
+    {
+      "name": "Broilerikiusaus",
+      "picture": "url_to_broilerikiusaus_picture",
+      "id": "4"
+    },
+    {
+      "name": "Kinkkukiusaus",
+      "picture": "url_to_kinkkukiusaus_picture",
+      "id": "5"
+    },
+    {
+      "name": "Grillimakkara Ranskalaiset ja makkarat/lihapullat",
+      "picture": "url_to_grillimakkara_picture",
+      "id": "6"
+    },
+    {
+      "name": "Kanakastike riisillä sekä grillatulla broilerilla",
+      "picture": "url_to_kanakastike_picture",
+      "id": "7"
+    },
+    {
+      "name": "Tortillat",
+      "picture": "url_to_tortillat_picture",
+      "id": "8"
+    },
+    {
+      "name": "Possunleikkeet",
+      "picture": "url_to_possunleikkeet_picture",
+      "id": "9"
+    },
+    {
+      "name": "Lihamureke",
+      "picture": "url_to_lihamureke_picture",
+      "id": "10"
+    },
+    {
+      "name": "Spaghettikastike ja lihapullat",
+      "picture": "url_to_spaghettikastike_picture",
+      "id": "11"
+    },
+    {
+      "name": "Jauhelihakeitto",
+      "picture": "url_to_jauhelihakeitto_picture",
+      "id": "12"
+    }
+  ]
+}
