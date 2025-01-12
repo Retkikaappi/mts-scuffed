@@ -1,6 +1,26 @@
+import { useNavigate } from 'react-router-dom'
+import { useLogin, useUser } from '../contexts/userContext'
+
 const Login = () => {
-  const handleSubmit = (e) => {
+  const user = useUser()
+  const login = useLogin()
+
+  const nav = useNavigate()
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
+      await login({
+        username: e.target.username.value,
+        password: e.target.password.value,
+      })
+      console.log('success')
+      e.target.username.value = ''
+      e.target.password.value = ''
+      nav('/')
+    } catch (error) {
+      console.log('error caught: ', error)
+    }
   }
   return (
     <div>

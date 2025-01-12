@@ -1,8 +1,22 @@
-import { useRecipes } from '../recipeContext'
+import { useRecipes } from '../contexts/recipeContext'
 
 const Home = () => {
-  const recipes = useRecipes()
+  const { recipes, error, isLoading } = useRecipes()
 
+  if (isLoading) {
+    return (
+      <div>
+        <p>Loading...</p>
+        <div className="loader"></div>
+      </div>
+    )
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
+  if (!recipes) {
+    return <div>No recipes</div>
+  }
   return (
     <div className="content">
       <h2>This is home</h2>

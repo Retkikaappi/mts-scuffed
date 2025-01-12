@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { getAll } from './requests/recipes'
+import { getAll } from '../requests/recipes'
 
 const RecipeContext = createContext()
 
@@ -19,18 +19,8 @@ const RecipeProvider = (props) => {
     refetchOnWindowFocus: false,
   })
 
-  console.log('recipes', recipes)
-
-  if (isLoading) {
-    return <div>Recipes are loading</div>
-  }
-
-  if (error) {
-    return <div>Failed to load recipes</div>
-  }
-
   return (
-    <RecipeContext.Provider value={recipes}>
+    <RecipeContext.Provider value={{ recipes, error, isLoading }}>
       {props.children}
     </RecipeContext.Provider>
   )
