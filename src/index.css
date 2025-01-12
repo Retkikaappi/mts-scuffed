@@ -29,6 +29,14 @@
   background-color: #2e2e2e;
   width: 50%;
   margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar img {
+  padding: 0;
+  margin: 0 1em 0 1em;
 }
 
 .suggestionContent {
@@ -49,4 +57,14 @@
 
 .isActive {
   color: green;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  padding: 4em;
+}
+.loginForm * {
+  margin: 0.5em;
+  padding: 0.5em;
 }
