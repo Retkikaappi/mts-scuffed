@@ -5,11 +5,21 @@ import Home from './components/Home'
 import RecipeProvider from './contexts/recipeContext'
 import Login from './components/Login'
 import sign from './assets/LED-sign.png'
-import { useLogout, useUser } from './contexts/userContext'
+import { useLogout, useSetUser, useUser } from './contexts/userContext'
+import { useEffect } from 'react'
+import MenuEdit from './components/MenuEdit'
 
 function App() {
   const user = useUser()
+  const setUser = useSetUser()
   const logout = useLogout()
+
+  useEffect(() => {
+    const activeUser = window.localStorage.getItem('activeUser')
+    if (activeUser) {
+      setUser(JSON.parse(activeUser))
+    }
+  }, [])
 
   const handleLogout = async () => {
     await logout(user)
@@ -20,21 +30,29 @@ function App() {
   return (
     <div className="appbody">
       <div className="navbar">
-        <img src={sign} width={'100px'} />
+        <img src={sign} width={'140em'} />
         <NavLink
-          to={'/'}
+          to="/"
           className={({ isActive }) => (isActive ? 'isActive' : '')}
         >
           Koti
         </NavLink>
+        {user && (
+          <NavLink
+            to="/menuedit"
+            className={({ isActive }) => (isActive ? 'isActive' : '')}
+          >
+            Edit Menu
+          </NavLink>
+        )}
         <NavLink
-          to={'/suggestion'}
+          to="/suggestion"
           className={({ isActive }) => (isActive ? 'isActive' : '')}
         >
           Kotikokki
         </NavLink>
         <NavLink
-          to={'/aisuggestion'}
+          to="/aisuggestion"
           className={({ isActive }) => (isActive ? 'isActive' : '')}
         >
           AI
@@ -43,15 +61,14 @@ function App() {
           <button onClick={handleLogout}>Log out</button>
         ) : (
           <NavLink
-            to={'/login'}
+            to="/login"
             className={({ isActive }) => (isActive ? 'isActive' : '')}
           >
             Login
           </NavLink>
         )}
-        {user && <NavLink>Edit Menu</NavLink>}
 
-        <img src={sign} width={'100px'} />
+        <img src={sign} width={'140em'} />
       </div>
       <RecipeProvider>
         <Routes>
@@ -59,6 +76,7 @@ function App() {
           <Route path="/suggestion" element={<Suggestion />} />
           <Route path="/aisuggestion" element={<AISuggestion />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/menuedit" element={<MenuEdit />} />
         </Routes>
       </RecipeProvider>
     </div>

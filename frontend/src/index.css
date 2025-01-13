@@ -27,7 +27,6 @@
 .navbar {
   padding: 1em;
   background-color: #2e2e2e;
-  width: 50%;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -42,8 +41,9 @@
 
 .suggestionContent {
   width: 100%;
-  overflow-y: scroll;
+  overflow: hidden;
 }
+
 .content {
   display: flex;
   width: 50%;

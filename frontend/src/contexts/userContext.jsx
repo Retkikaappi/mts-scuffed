@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer } from 'react'
+import { login } from '../requests/login'
 
 const reducer = (state, action) => {
   if (action.type === 'LOGIN') {
@@ -42,11 +43,23 @@ export const useLogin = () => {
   const [, dispatch] = useContext(UserContext)
 
   return async (creds) => {
+    const resp = await login(creds)
+    dispatch({
+      type: 'LOGIN',
+      payload: resp,
+    })
+    localStorage.setItem('activeUser', JSON.stringify(resp))
+  }
+}
+
+export const useSetUser = () => {
+  const [, dispatch] = useContext(UserContext)
+
+  return async (creds) => {
     dispatch({
       type: 'LOGIN',
       payload: creds,
     })
-    localStorage.setItem('activeUser', JSON.stringify(creds))
   }
 }
 
