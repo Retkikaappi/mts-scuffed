@@ -1,7 +1,7 @@
 import { useRecipes } from '../contexts/recipeContext'
 import { useUser } from '../contexts/userContext'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { addOne } from '../requests/recipes'
+import { addOne, deleteOne } from '../requests/recipes'
 
 const MenuEdit = () => {
   const { recipes, error, isLoading } = useRecipes()
@@ -14,6 +14,17 @@ const MenuEdit = () => {
     onSuccess: (recipe) => {
       const recipes = queryClient.getQueryData(['recipes'])
       queryClient.setQueryData(['recipes'], recipes.concat(recipe))
+    },
+  })
+
+  const removeRecipeMutation = useMutation({
+    mutationFn: deleteOne,
+    onSuccess: (id) => {
+      const recipes = queryClient.getQueryData(['recipes'])
+      queryClient.setQueryData(
+        ['recipes'],
+        recipes.filter((ele) => ele.id !== id)
+      )
     },
   })
   const handleMenuAdd = (e) => {
@@ -30,6 +41,11 @@ const MenuEdit = () => {
       console.log('error', e)
     }
   }
+
+  const handleDelete = (recipe) => {
+    removeRecipeMutation.mutate(recipe)
+  }
+
   return (
     <div className="content">
       <form onSubmit={(e) => handleMenuAdd(e)} className="loginForm">
@@ -48,7 +64,8 @@ const MenuEdit = () => {
           ) : (
             recipes.map((ele, index) => (
               <li key={`recipeli_${index}`}>
-                {ele.name} {ele.pictre} <button>Delete</button>
+                {ele.name} {ele.pictre}{' '}
+                <button onClick={() => handleDelete(ele)}>Delete</button>
               </li>
             ))
           )}

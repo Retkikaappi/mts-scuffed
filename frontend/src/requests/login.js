@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = '/login'
+const baseUrl = '/api/login'
 
 export const login = async (user) => {
   const resp = await axios.post(baseUrl, user)

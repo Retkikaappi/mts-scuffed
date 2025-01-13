@@ -29,8 +29,8 @@ app.use(express.static('dist'))
 app.use(express.json())
 app.use(requestLog)
 
-app.use('/recipes', recipesRouter)
-app.use('/login', loginRouter)
+app.use('/api/recipes', recipesRouter)
+app.use('/api/login', loginRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`)

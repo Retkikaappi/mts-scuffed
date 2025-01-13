@@ -25,8 +25,6 @@ function App() {
     await logout(user)
     console.log('logout success')
   }
-
-  console.log('user in app', user)
   return (
     <div className="appbody">
       <div className="navbar">
