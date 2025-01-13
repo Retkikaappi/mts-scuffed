@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useLogin, useUser } from '../contexts/userContext'
+import { useLogin } from '../contexts/userContext'
 
 const Login = () => {
   const login = useLogin()

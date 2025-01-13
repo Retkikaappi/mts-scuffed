@@ -1,7 +1,26 @@
+import { useState } from 'react'
 import { useRecipes } from '../contexts/recipeContext'
+import { Wheel } from 'react-custom-roulette'
+import PrizeModal from './Modal'
 
 const Home = () => {
+  const [modal, setModal] = useState(false)
+  const [mustSpin, setMustSpin] = useState(false)
+  const [prizeNumber, setPrizeNumber] = useState(0)
   const { recipes, error, isLoading } = useRecipes()
+
+  let data = []
+  if (recipes) {
+    data = recipes.map((ele) => ({ option: ele.name }))
+  }
+
+  const startSpin = () => {
+    if (!mustSpin) {
+      const newPrizeNumber = Math.floor(Math.random() * data.length)
+      setPrizeNumber(newPrizeNumber)
+      setMustSpin(!mustSpin)
+    }
+  }
 
   if (isLoading) {
     return (
@@ -19,15 +38,27 @@ const Home = () => {
   }
   return (
     <div className="content">
-      <h2>This is home</h2>
-      <h3>Reseptit:</h3>
-      <ul>
-        {recipes.map((ele, index) => (
-          <li key={`recipeli_${index}`}>
-            {ele.name} {ele.pictre}
-          </li>
-        ))}
-      </ul>
+      <button onClick={startSpin}>Spin</button>
+      {modal && (
+        <PrizeModal modal={modal} setModal={setModal} recipes={recipes} />
+      )}
+      <div className="spinner">
+        <Wheel
+          radiusLineWidth={'2'}
+          outerBorderWidth={'2'}
+          fontWeight={'normal'}
+          fontSize={'18'}
+          mustStartSpinning={mustSpin}
+          prizeNumber={prizeNumber}
+          data={data}
+          backgroundColors={['#2E2E2E', 'green']}
+          textColors={['#ffffff']}
+          onStopSpinning={() => {
+            setModal(prizeNumber)
+            setMustSpin(!mustSpin)
+          }}
+        />
+      </div>
     </div>
   )
 }

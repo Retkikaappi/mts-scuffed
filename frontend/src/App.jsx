@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="appbody">
       <div className="navbar">
-        <img src={sign} width={'140em'} />
+        <img src={sign} width={'80em'} />
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? 'isActive' : '')}
@@ -68,7 +68,7 @@ function App() {
           </NavLink>
         )}
 
-        <img src={sign} width={'140em'} />
+        <img src={sign} width={'80em'} />
       </div>
       <RecipeProvider>
         <Routes>

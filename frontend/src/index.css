@@ -8,7 +8,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  overflow: hidden;
 }
 
 .appbody {
@@ -19,9 +18,12 @@
 }
 
 .navbar * {
-  padding: 10px;
+  padding: 0.4em;
   font-weight: bold;
   font-size: 1.5em;
+  text-decoration: none;
+  background-color: #222222;
+  margin: 0 0.2em 0 0.2em;
 }
 
 .navbar {
@@ -31,11 +33,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #cec1a6;
+  z-index: 7;
+}
+
+.navbar a {
+  transition: background-color 0.3s, color 0.3s;
+}
+.navbar a:hover {
+  background-color: rgb(0, 55, 0);
 }
 
 .navbar img {
   padding: 0;
-  margin: 0 1em 0 1em;
+  margin: 0 2em 0 2em;
   animation: invertColors 4s infinite;
 }
 
@@ -49,6 +60,7 @@
   width: 50%;
   flex-direction: column;
   align-items: center;
+  margin: 1em;
 }
 
 .content ul {
@@ -58,12 +70,13 @@
 
 .isActive {
   color: green;
+  border: green 1px solid;
 }
 
 .loginForm {
   display: flex;
   flex-direction: column;
-  padding: 4em;
+  padding: 2em;
 }
 .loginForm * {
   margin: 0.5em;
@@ -88,7 +101,6 @@
   }
 }
 
-/* HTML: <div class="loader"></div> */
 .loader {
   width: 3em;
   aspect-ratio: 1;
@@ -102,4 +114,62 @@
   to {
     transform: rotate(1turn);
   }
+}
+
+.modal {
+  position: absolute;
+  border: 1px solid #cec1a6;
+  width: 40vw;
+  height: 40vw;
+  z-index: 8;
+  background-color: #191a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal img {
+  height: 20vw;
+  margin: 1em 0 2em;
+}
+
+.content button {
+  z-index: 7;
+}
+
+button {
+  background-color: #191a1a;
+  color: #cec1a6;
+  font-weight: bold;
+  padding: 0.7rem 1.5rem;
+  border: 1px solid #cec1a6;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: #cec1a6;
+  color: #313e59;
+}
+
+input {
+  border: 1px solid #cec1a6;
+  padding: 0.8rem 1rem;
+  font-size: 1em;
+  outline: none;
+}
+
+.editContent button {
+  padding: 0.2em;
+  margin-left: 0.2em;
+}
+
+.editContent li {
+  padding: 0.5em;
+  list-style: none;
+}
+
+.editContent {
+  max-height: 800px;
+  overflow-y: auto;
 }

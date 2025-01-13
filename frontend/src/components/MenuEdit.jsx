@@ -35,26 +35,27 @@ const MenuEdit = () => {
       <h2>This is MenuEdit</h2>
 
       <form onSubmit={(e) => handleMenuAdd(e)} className="loginForm">
-        <input placeholder="name" type="text" name="name" />
+        <input placeholder="nimi" type="text" name="name" />
         <input placeholder="url" type="text" name="picture" />
-        <button type="submit">Add</button>
+        <button type="submit">Lisää</button>
       </form>
+      <div className="editContent">
+        <h3>Reseptit:</h3>
 
-      <h3>Reseptit:</h3>
-
-      <ul>
-        {error ? (
-          <div>error loading recipes</div>
-        ) : isLoading ? (
-          <div>Recipes are loading...</div>
-        ) : (
-          recipes.map((ele, index) => (
-            <li key={`recipeli_${index}`}>
-              {ele.name} {ele.pictre} <button>Delete</button>
-            </li>
-          ))
-        )}
-      </ul>
+        <ul>
+          {error ? (
+            <div>error loading recipes</div>
+          ) : isLoading ? (
+            <div>Recipes are loading...</div>
+          ) : (
+            recipes.map((ele, index) => (
+              <li key={`recipeli_${index}`}>
+                {ele.name} {ele.pictre} <button>Delete</button>
+              </li>
+            ))
+          )}
+        </ul>
+      </div>
     </div>
   )
 }
