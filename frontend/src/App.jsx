@@ -42,7 +42,7 @@ function App() {
             to="/menuedit"
             className={({ isActive }) => (isActive ? 'isActive' : '')}
           >
-            Edit Menu
+            Muuta menua
           </NavLink>
         )}
         <NavLink

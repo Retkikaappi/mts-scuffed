@@ -32,8 +32,6 @@ const MenuEdit = () => {
   }
   return (
     <div className="content">
-      <h2>This is MenuEdit</h2>
-
       <form onSubmit={(e) => handleMenuAdd(e)} className="loginForm">
         <input placeholder="nimi" type="text" name="name" />
         <input placeholder="url" type="text" name="picture" />

@@ -36,9 +36,12 @@ const Home = () => {
   if (!recipes) {
     return <div>No recipes</div>
   }
+
   return (
     <div className="content">
-      <button onClick={startSpin}>Spin</button>
+      <button onClick={startSpin} disabled={mustSpin} className="spin">
+        Pyöritä
+      </button>
       {modal && (
         <PrizeModal modal={modal} setModal={setModal} recipes={recipes} />
       )}
@@ -55,7 +58,7 @@ const Home = () => {
           textColors={['#ffffff']}
           onStopSpinning={() => {
             setModal(prizeNumber)
-            setMustSpin(!mustSpin)
+            setMustSpin(false)
           }}
         />
       </div>

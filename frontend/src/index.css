@@ -10,11 +10,17 @@
   font-weight: 400;
 }
 
+#root {
+  justify-items: center;
+  text-align: center;
+}
+
 .appbody {
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90%;
 }
 
 .navbar * {
@@ -126,6 +132,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .modal img {
@@ -172,4 +179,13 @@ input {
 .editContent {
   max-height: 800px;
   overflow-y: auto;
+}
+
+.modal button {
+  font-size: 1.5em;
+}
+
+.spin {
+  margin: 1em;
+  font-size: 1.5em;
 }
